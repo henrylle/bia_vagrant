@@ -22,7 +22,7 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 
 # Instalando o Node
-curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
 # Atualizando versao do NPM
 sudo npm install -g npm@latest --loglevel=error
@@ -32,6 +32,6 @@ sudo npm install -g npm@latest --loglevel=error
   sudo apt-get install unzip -y
 
   # AWS CLI (Install)
-  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-  unzip awscliv2.zip
+  sudo curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  sudo unzip awscliv2.zip
   sudo ./aws/install

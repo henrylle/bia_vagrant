@@ -53,6 +53,8 @@ Vagrant.configure('2') do |config|
   config.vm.network 'forwarded_port', guest: 8080, host: 8080
   config.vm.network 'forwarded_port', guest: 5433, host: 5433
 
+  config.vm.provision 'shell', inline: "git clone https://github.com/henrylle/bia_vagrant && cd bia_vagrant"
+  config.vm.provision 'shell', inline: "chmod +x prepara_linux_vagrant.sh"
   #config.vm.provision 'shell', inline: "sudo sed -i 's/^# deb/deb/g' /etc/apt/sources.list"
   # config.vm.provision 'shell', inline: 'sudo apt-get -y update'
 

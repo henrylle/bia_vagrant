@@ -13,10 +13,6 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
 
-# Configurando permissão para não ter que ficar usando root
-sudo usermod -aG docker vagrant
-newgrp docker
-
 # Instalando docker-compose
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
@@ -35,3 +31,7 @@ sudo npm install -g npm@latest --loglevel=error
   sudo curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
   sudo unzip awscliv2.zip
   sudo ./aws/install
+
+# Configurando permissão no docker para não ter que ficar usando root
+sudo usermod -aG docker vagrant
+newgrp docker

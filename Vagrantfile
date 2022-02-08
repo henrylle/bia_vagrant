@@ -12,7 +12,7 @@ Vagrant.configure('2') do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = 'ubuntu/bionic64'
+  config.vm.box = 'ubuntu/focal64'
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -48,20 +48,12 @@ Vagrant.configure('2') do |config|
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
-  #
-  config.vm.provider 'virtualbox' do |vb|
-    #   # Display the VirtualBox GUI when booting the machine
-    vb.gui = true
-    #
-    #   # Customize the amount of memory on the VM:
-    vb.memory = '4096'
-  end
-
+  #  
   config.vm.network 'forwarded_port', guest: 3001, host: 3001
   config.vm.network 'forwarded_port', guest: 8080, host: 8080
   config.vm.network 'forwarded_port', guest: 5433, host: 5433
 
-  config.vm.provision 'shell', inline: "sudo sed -i 's/^# deb/deb/g' /etc/apt/sources.list"
+  #config.vm.provision 'shell', inline: "sudo sed -i 's/^# deb/deb/g' /etc/apt/sources.list"
   config.vm.provision 'shell', inline: 'sudo apt-get -y update'
 
   # INSTALANDO DOCKER
@@ -91,7 +83,7 @@ Vagrant.configure('2') do |config|
   config.vm.provision 'shell', inline: 'curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
   config.vm.provision 'shell', inline: 'sudo apt-get install -y nodejs'
   # Atualizando versao do NPM
-  config.vm.provision 'shell', inline: 'npm install -g npm@latest --loglevel=error'
+  config.vm.provision 'shell', inline: 'sudo npm install -g npm@latest --loglevel=error'
 
   # Instalando AWS CLI
   # Pre-requisito (unzip)

@@ -54,49 +54,49 @@ Vagrant.configure('2') do |config|
   config.vm.network 'forwarded_port', guest: 5433, host: 5433
 
   #config.vm.provision 'shell', inline: "sudo sed -i 's/^# deb/deb/g' /etc/apt/sources.list"
-  config.vm.provision 'shell', inline: 'sudo apt-get -y update'
+  # config.vm.provision 'shell', inline: 'sudo apt-get -y update'
 
-  # INSTALANDO DOCKER
-  config.vm.provision 'shell', inline: 'sudo apt-get install -y ca-certificates curl gnupg lsb-release'
-  config.vm.provision 'shell',
-                      inline: 'curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg'
-  config.vm.provision 'shell', inline: 'echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null'
-  config.vm.provision 'shell', inline: 'sudo apt-get -y update'
-  config.vm.provision 'shell', inline: 'sudo apt-get install -y docker-ce docker-ce-cli containerd.io'
+  # # INSTALANDO DOCKER
+  # config.vm.provision 'shell', inline: 'sudo apt-get install -y ca-certificates curl gnupg lsb-release'
+  # config.vm.provision 'shell',
+  #                     inline: 'curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg'
+  # config.vm.provision 'shell', inline: 'echo \
+  # "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  # $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null'
+  # config.vm.provision 'shell', inline: 'sudo apt-get -y update'
+  # config.vm.provision 'shell', inline: 'sudo apt-get install -y docker-ce docker-ce-cli containerd.io'
 
-  # Startando e habilitando docker para já iniciar ativo
-  config.vm.provision 'shell', inline: 'sudo systemctl enable docker.service'
-  config.vm.provision 'shell', inline: 'sudo systemctl enable containerd.service'
+  # # Startando e habilitando docker para já iniciar ativo
+  # config.vm.provision 'shell', inline: 'sudo systemctl enable docker.service'
+  # config.vm.provision 'shell', inline: 'sudo systemctl enable containerd.service'
 
-  # Configurando permissão para não ter que ficar usando root
-  config.vm.provision 'shell', inline: 'sudo usermod -aG docker vagrant'
-  config.vm.provision 'shell', inline: 'newgrp docker'
+  # # Configurando permissão para não ter que ficar usando root
+  # config.vm.provision 'shell', inline: 'sudo usermod -aG docker vagrant'
+  # config.vm.provision 'shell', inline: 'newgrp docker'
 
-  # Instalando docker-compose
-  config.vm.provision 'shell',
-                      inline: 'sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose'
-  config.vm.provision 'shell', inline: 'sudo chmod +x /usr/local/bin/docker-compose'
+  # # Instalando docker-compose
+  # config.vm.provision 'shell',
+  #                     inline: 'sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose'
+  # config.vm.provision 'shell', inline: 'sudo chmod +x /usr/local/bin/docker-compose'
 
-  # Instalando o Node
-  config.vm.provision 'shell', inline: 'curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
-  config.vm.provision 'shell', inline: 'sudo apt-get install -y nodejs'
-  # Atualizando versao do NPM
-  config.vm.provision 'shell', inline: 'sudo npm install -g npm@latest --loglevel=error'
+  # # Instalando o Node
+  # config.vm.provision 'shell', inline: 'curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
+  # config.vm.provision 'shell', inline: 'sudo apt-get install -y nodejs'
+  # # Atualizando versao do NPM
+  # config.vm.provision 'shell', inline: 'sudo npm install -g npm@latest --loglevel=error'
 
-  # Instalando AWS CLI
-  # Pre-requisito (unzip)
-  config.vm.provision 'shell', inline: 'sudo apt-get install unzip -y'
+  # # Instalando AWS CLI
+  # # Pre-requisito (unzip)
+  # config.vm.provision 'shell', inline: 'sudo apt-get install unzip -y'
 
-  # AWS CLI (Install)
-  config.vm.provision 'shell',
-                      inline: 'curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
-  config.vm.provision 'shell', inline: 'unzip awscliv2.zip'
-  config.vm.provision 'shell', inline: 'sudo ./aws/install'
+  # # AWS CLI (Install)
+  # config.vm.provision 'shell',
+  #                     inline: 'curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
+  # config.vm.provision 'shell', inline: 'unzip awscliv2.zip'
+  # config.vm.provision 'shell', inline: 'sudo ./aws/install'
 
-  # Paradas de teclado br
-  config.vm.provision 'shell', inline: 'sudo loadkeys br'
+  # # Paradas de teclado br
+  # config.vm.provision 'shell', inline: 'sudo loadkeys br'
   # config.vm.provision 'shell', inline: 'sudo apt-get install -y gnome-session gdm3'
   # config.vm.provision 'shell', inline: "sudo sed -i 's/XKBLAYOUT=\"us\"/XKBLAYOUT=\"br\"/g' /etc/default/keyboard"
   # config.vm.provision 'shell',

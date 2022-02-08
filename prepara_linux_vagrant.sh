@@ -33,5 +33,5 @@ sudo npm install -g npm@latest --loglevel=error
   sudo ./aws/install
 
 # Configurando permissão no docker para não ter que ficar usando root
-sudo usermod -aG docker vagrant
+sudo usermod -aG docker $USER
 newgrp docker
